@@ -1,7 +1,7 @@
 import json
 from flask_restful import Resource
 from flask import request, jsonify
-from flask_jwt_extended import jwt_required
+#from flask_jwt_extended import jwt_required
 from service.Kit_service import KitService
 
 class AllKit(Resource):

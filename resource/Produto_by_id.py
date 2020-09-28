@@ -1,11 +1,11 @@
 from flask_restful import Resource
-from flask_jwt_extended import jwt_required
+#from flask_jwt_extended import jwt_required
 
 from service.Produto_service import ProdutoService
 
 class ProdutoById(Resource):
 
-    decorators=[jwt_required]
+   # decorators=[jwt_required]
 
     # @jwt_required
     def get(self, sku):

@@ -5,7 +5,7 @@ from flask import Flask, Blueprint, request, jsonify
 from flask_restful import Api
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
-from flask_jwt_extended import create_access_token, JWTManager
+# from flask_jwt_extended import create_access_token, JWTManager
 from resource.user_controller import valid_user
 from util.swagger_generator import FlaskSwaggerGenerator
 from model.Produto_model import ProdutoModel
@@ -95,8 +95,8 @@ logging.basicConfig(
 
 APP = Flask(__name__)
 CORS(APP)
-APP.config['JWT_SECRET_KEY'] = str(uuid.uuid4())
-JWT = JWTManager(APP)
+# APP.config['JWT_SECRET_KEY'] = str(uuid.uuid4())
+# JWT = JWTManager(APP)
 config_routes(APP)
 set_swagger(APP)
 

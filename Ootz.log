@@ -41,3 +41,43 @@
 2020-09-28 18:23:56 INFO     Novo registro gravado em Item
 2020-09-28 18:23:58 INFO     POST ok!
 2020-09-28 18:23:58 INFO     127.0.0.1 - - [28/Sep/2020 18:23:58] "POST /Ootz/Item HTTP/1.1" 201 -
+2020-09-28 18:38:38 INFO      * Restarting with stat
+2020-09-28 18:38:38 WARNING   * Debugger is active!
+2020-09-28 18:38:38 INFO      * Debugger PIN: 332-404-638
+2020-09-28 18:38:38 INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-09-28 18:38:48 INFO     127.0.0.1 - - [28/Sep/2020 18:38:48] "GET /docs HTTP/1.1" 308 -
+2020-09-28 18:38:48 INFO     127.0.0.1 - - [28/Sep/2020 18:38:48] "GET /docs/ HTTP/1.1" 200 -
+2020-09-28 18:38:49 INFO     127.0.0.1 - - [28/Sep/2020 18:38:49] "GET /api HTTP/1.1" 200 -
+2020-09-28 18:54:35 INFO      * Restarting with stat
+2020-09-28 18:54:36 WARNING   * Debugger is active!
+2020-09-28 18:54:36 INFO      * Debugger PIN: 332-404-638
+2020-09-28 18:54:36 INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-09-28 18:54:38 INFO     127.0.0.1 - - [28/Sep/2020 18:54:38] "GET /docs/ HTTP/1.1" 200 -
+2020-09-28 18:54:38 INFO     127.0.0.1 - - [28/Sep/2020 18:54:38] "GET /api HTTP/1.1" 200 -
+2020-09-28 18:54:38 INFO     127.0.0.1 - - [28/Sep/2020 18:54:38] "GET /docs/favicon-32x32.png HTTP/1.1" 200 -
+2020-09-28 18:54:49 INFO     127.0.0.1 - - [28/Sep/2020 18:54:49] "GET /Ootz/Produto/cad-anot-red-bug HTTP/1.1" 401 -
+2020-09-28 18:56:34 INFO      * Detected change in 'C:\\Users\\FAST SHOP\\Ootz\\app.py', reloading
+2020-09-28 18:56:34 INFO      * Restarting with stat
+2020-09-28 18:56:35 WARNING   * Debugger is active!
+2020-09-28 18:56:35 INFO      * Debugger PIN: 332-404-638
+2020-09-28 18:56:35 INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-09-28 18:56:39 INFO      * Restarting with stat
+2020-09-28 18:56:40 WARNING   * Debugger is active!
+2020-09-28 18:56:40 INFO      * Debugger PIN: 332-404-638
+2020-09-28 18:56:40 INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-09-28 18:56:45 INFO     127.0.0.1 - - [28/Sep/2020 18:56:45] "GET /Ootz/Produto/cad-anot-red-bug HTTP/1.1" 500 -
+2020-09-28 19:01:46 INFO      * Detected change in 'C:\\Users\\FAST SHOP\\Ootz\\resource\\Produto_by_id.py', reloading
+2020-09-28 19:01:46 INFO      * Restarting with stat
+2020-09-28 19:02:49 INFO      * Restarting with stat
+2020-09-28 19:02:50 WARNING   * Debugger is active!
+2020-09-28 19:02:50 INFO      * Debugger PIN: 332-404-638
+2020-09-28 19:02:50 INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-09-28 19:02:57 INFO     127.0.0.1 - - [28/Sep/2020 19:02:57] "GET /docs/ HTTP/1.1" 200 -
+2020-09-28 19:02:57 INFO     127.0.0.1 - - [28/Sep/2020 19:02:57] "GET /api HTTP/1.1" 200 -
+2020-09-28 19:02:57 INFO     127.0.0.1 - - [28/Sep/2020 19:02:57] "GET /docs/favicon-32x32.png HTTP/1.1" 200 -
+2020-09-28 19:03:06 INFO     Procurando "cad-anot-red-bug" em Produto ...
+2020-09-28 19:03:06 INFO     GET ok!
+2020-09-28 19:03:06 INFO     127.0.0.1 - - [28/Sep/2020 19:03:06] "GET /Ootz/Produto/cad-anot-red-bug HTTP/1.1" 200 -
+2020-09-28 19:04:52 INFO     Procurando "101" em Item ...
+2020-09-28 19:04:53 INFO     GET ok!
+2020-09-28 19:04:53 INFO     127.0.0.1 - - [28/Sep/2020 19:04:53] "GET /Ootz/Item/101 HTTP/1.1" 200 -

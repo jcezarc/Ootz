@@ -1,11 +1,11 @@
-# Desafio ATADOS
+# Desafio Ootz
 
 ##### Autor: `Júlio Cascalles`
 
 
 ---
 ### Conteúdo
-O projeto _Atados_ é um teste que visa demonstrar funções básicas de um back-end Python que gerencia voluntários em ações sociais.
+O projeto _Ootz_ é um teste que visa demonstrar funções básicas de um back-end Python para e-commerce com kits de produtos.
 
 Recursos:
 * Documentação Swagger automática*;
@@ -13,7 +13,7 @@ Recursos:
 * MVC** com Marshmallow e SqlAlchemy;
 * DAO para banco de dados em Grafos "Neo4J";
 * Testes unitários com Pytest.
-
+* <s>Autenticação por JWT</s> (desabilitado)
 
 ### Endpoints
 Supondo que você esteja rodando esta API **localmente**, as seguintes rotas estarão disponíveis:
@@ -21,15 +21,15 @@ Supondo que você esteja rodando esta API **localmente**, as seguintes rotas est
 * `/docs` Traz a documentação _Swagger_ com todos os verbos REST disponíveis para a API e exemplos funcionais (Os verbos REST podem ser usados diretamente no browser, ou com algum programa como _POSTMAN_...)
 ![verbos REST](./doc/Swagger.png)
 
-* `/Atados/Acao` Pode ser usado para trazer várias ações (onde você pode passar uma query com na url, p.ex.: `...?local=Salvador`)
-    * você pode também passar um `.../<nome>`
+* `/Ootz/Produto` Pode ser usado para trazer várias produtos (onde você pode passar uma query com na url, p.ex.: `...?nome=Caderno`)
+    * você pode também passar um `.../<sku>`
     para operações que exigem um registro único (consulta por campo chave ou exclusão)
     * Em caso de **POST** ou **PUT** é preciso passar o JSON adequado no _body_ da requisição (o formato do JSON estará na documentação Swagger).
-    * No **PUT**, só é necessário passar o campo chave e o que vai alterado.
+    * No **PUT**, só é necessário passar o campo chave e o que vai ser alterado.
 
-* `/Atados/Pessoa` Funciona igual _/Atados/Acao_ só que para **Pessoas**.
+* `/Ootz/Kit` Funciona igual _/Ootz/Acao_ só que para **Kits**.
 
-* `/Atados/Voluntario` Relaciona uma **Pessoa** com uma **Ação**.
+* `/Ootz/Item` Relaciona uma **Kit** com uma **Produto**.
 
 ---
 
@@ -48,8 +48,7 @@ Esta API foi testada por mim para usar qualquer um dos bancos de dados abaixo:
 ### Testes unitários
 As seguintes situações foram testadas para verificar se cada serviço está funcionando conforme esperado:
 ![](./doc/testes_unitarios2.png)
-* Falha na busca: Deve retornar _"Not found"_ quando não encontra o registro
-    * Não usei status 404 porque isso resulta em erro para vários SPA como React e Angular;
+* Falha na busca: Deve retornar status 404 quando não encontra o registro
 * Sucesso na busca: Retorna o registro relacionado ao campo chave usado na busca;
 * Falha de inclusão: Não permite registro com campos inválidos;
 * Sucesso na inclusão: Simula a gravação de um registro e retorna sem erros;
@@ -59,25 +58,26 @@ As seguintes situações foram testadas para verificar se cada serviço está fu
 
 Os dados abaixo são resultado dos testes com a API.
 A gravação dos registros pode ocorrer de várias formas:
-* Gravar uma Ação, gravar uma Pessoa e então Gravar um Voluntariado;
+* Gravar um Kit, gravar uma Produto e então Gravar um Item;
 * Gravar tudo num único JSON representando todos os relacionamentos:
 
 ```
  {
-    "id": 2,
-    "inicio": "2020-04-01",
-    "pessoa": {
-      "nome": "Eletéro Marcolino",
-      "sobrenome": "da Silva",
-      "bairro": "São Paulo",
-      "cidade": "Pinheiros"
+    "id": "101",
+    "quantidade": 2,
+    "desconto": 10,
+    "produto": {
+      "sku": "cad-anot-red-bug",
+      "nome": "Caderno de anotações Red Bug",
+      "custo": 4.25,
+      "preco": 6.5,
+      "estoque": 50
     },
-    "acao": {
-      "nome": "RoomsAgainstCovid",
-      "instituicao": "Tech4Covid",
-      "local": "Curitiba",
-      "descricao": "Alocação de profissionais de saúde próximos aos seus locais de trabalho"
+    "kit": {
+      "sku": "kit-va-trabalhar",
+      "nome": "Kit Vá Trabalhar"
     }
+  }
 ```
 
 ![](./doc/dados.png)
