@@ -19,7 +19,7 @@ Recursos:
 Supondo que você esteja rodando esta API **localmente**, as seguintes rotas estarão disponíveis:
     
 * `/docs` Traz a documentação _Swagger_ com todos os verbos REST disponíveis para a API e exemplos funcionais (Os verbos REST podem ser usados diretamente no browser, ou com algum programa como _POSTMAN_...)
-![verbos REST](./doc/Swagger.png)
+![verbos REST](./doc/SwaggerLocal.png)
 
 * `/Ootz/Produto` Pode ser usado para trazer várias produtos (onde você pode passar uma query com na url, p.ex.: `...?nome=Caderno`)
     * você pode também passar um `.../<sku>`
