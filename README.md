@@ -27,7 +27,7 @@ Supondo que você esteja rodando esta API **localmente**, as seguintes rotas est
     * Em caso de **POST** ou **PUT** é preciso passar o JSON adequado no _body_ da requisição (o formato do JSON estará na documentação Swagger).
     * No **PUT**, só é necessário passar o campo chave e o que vai ser alterado.
 
-* `/Ootz/Kit` Funciona igual _/Ootz/Acao_ só que para **Kits**.
+* `/Ootz/Kit` Funciona igual _/Ootz/Produto_ só que para **Kits**.
 
 * `/Ootz/Item` Relaciona uma **Kit** com uma **Produto**.
 
