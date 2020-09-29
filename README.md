@@ -21,15 +21,20 @@ Supondo que você esteja rodando esta API **localmente**, as seguintes rotas est
 * `/docs` Traz a documentação _Swagger_ com todos os verbos REST disponíveis para a API e exemplos funcionais (Os verbos REST podem ser usados diretamente no browser, ou com algum programa como _POSTMAN_...)
 ![verbos REST](./doc/SwaggerLocal.png)
 
-* `/Ootz/Produto` Pode ser usado para trazer várias produtos (onde você pode passar uma query com na url, p.ex.: `...?nome=Caderno`)
+* `/Ootz/Produto` Pode ser usado para trazer várias produtos (onde você pode passar uma query na url, p.ex.: `...?nome=Caderno`)
     * você pode também passar um `.../<sku>`
     para operações que exigem um registro único (consulta por campo chave ou exclusão)
+        * sku é sigla para "Stock Keeping Unit" -- 
+        (Unidade de Manutenção de Estoque).
     * Em caso de **POST** ou **PUT** é preciso passar o JSON adequado no _body_ da requisição (o formato do JSON estará na documentação Swagger).
     * No **PUT**, só é necessário passar o campo chave e o que vai ser alterado.
 
 * `/Ootz/Kit` Funciona igual _/Ootz/Produto_ só que para **Kits**.
+  * um *kit* é uma promoção onde vários produtos juntos em certas quantidades dão descontos.
+  * O kit é vendido como um único produto, tanto que tem um **_sku_** próprio.
 
 * `/Ootz/Item` Relaciona uma **Kit** com uma **Produto**.
+  * Cada item do kit informa a quantidade e o desconto para cada tipo de produto.
 * `/Ootz/Calculo/<sku>` Ao passar o sku do kit, calcula o seguinte:
   * custo: O custo total do kit;
   * preco: A soma dos preços com os descontos;
