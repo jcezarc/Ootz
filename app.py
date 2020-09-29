@@ -17,6 +17,7 @@ from resource.all_Kit import AllKit
 from model.Item_model import ItemModel
 from resource.Item_by_id import ItemById
 from resource.all_Item import AllItem
+from resource.calculo import Calculo
 
 
 BASE_PATH = '/Ootz'
@@ -39,7 +40,7 @@ def config_routes(app):
     api.add_resource(AllItem, f'{BASE_PATH}/Item', methods=['POST'], endpoint='post_Item')
     api.add_resource(AllItem, f'{BASE_PATH}/Item', methods=['PUT'], endpoint='put_Item')
     api.add_resource(ItemById, f'{BASE_PATH}/Item/<id>', methods=['DELETE'], endpoint='delete_Item')
-    
+    api.add_resource(Calculo, f'{BASE_PATH}/Calculo/<sku>', methods=['GET'], endpoint='get_Calculo')
     #-------------------
 
 def set_swagger(app):
@@ -76,6 +77,9 @@ def swagger_details(args):
         else:
             resource = KitById
         model = KitModel()
+    elif id_route == 'Calculo':
+        resource = Calculo
+        model = ItemModel()
     elif id_route == 'Item':
         if not params:
             resource = AllItem

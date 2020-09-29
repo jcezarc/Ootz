@@ -14,25 +14,30 @@ class Neo4Table(DbTable):
             encrypted=False
         )
 
-    def query_elements(self, operator, filter_expr='', suffix=''):
+    def execute(self, command):
+        print('-'*100)
+        print(command)
+        print('-'*100)
+        session = self.driver.session()
+        return session.run(command)
+
+    def query_elements(self, operator, filter_expr='', main_table=True):
         expr_join = ''
-        main_table = not suffix
-        curr_alias = self.alias + suffix
-        alias_list = curr_alias
+        alias_list = self.alias
         if operator.upper() == 'RETURN':
             for field in self.joins:
                 join = self.joins[field]
                 join_params = join.query_elements(
                     operator,
                     '',
-                    '_'+self.alias   # '_'+curr_alias
+                    False
                 )
                 alias_list += ', '+join_params['alias_list']
                 if expr_join:
-                    expr_join += ', ({})'.format(curr_alias)
+                    expr_join += ', ({})'.format(self.alias)
                 expr_join += '-->({alias}:{table}){join}'.format(**join_params)
         result = {
-            'alias': curr_alias,
+            'alias': self.alias,
             'table': self.table_name,
             'join': expr_join,
             'alias_list': alias_list
@@ -42,19 +47,15 @@ class Neo4Table(DbTable):
             result['operator'] = operator
         return result
 
-    def inflate(self, row, last=None, suffix=''):
+    def inflate(self, row, last=None):
         record={}
         combine = False
-        curr_alias = self.alias+suffix
         for field in self.map:
             join = self.joins.get(field)
             if join:
-                value = join.inflate(
-                    row, 
-                    suffix='_'+self.alias
-                )[0]
+                value = join.inflate(row)[0]
             else:
-                value = row[curr_alias].get(field)
+                value = row[self.alias].get(field)
             if combine and join:
                 result = last[field]
                 if not isinstance(result, list):
@@ -72,8 +73,7 @@ class Neo4Table(DbTable):
         command = CYPHER_QUERY.format(**params)
         order_fields = [self.alias+'.'+f for f in self.pk_fields]
         command += ' ORDER BY ' + ','.join(order_fields)
-        session = self.driver.session()
-        dataset = session.run(command)
+        dataset = self.execute(command)
         # -----------------------------------------
         result = []
         record = None
@@ -97,13 +97,21 @@ class Neo4Table(DbTable):
         return found
 
     def contained_clause(self, field, value):
+        if field in self.pk_fields:
+            return super().contained_clause(field, value)
         return "CONTAINS '" + value + "'"
 
     def get_conditions(self, values, only_pk=False):
         if not values:
             return ''
         super().get_conditions(values, only_pk)
-        cond_list = [self.alias+'.'+cond for cond in self.conditions]
+        cond_list = []
+        for expr in self.conditions:
+            if '.' not in expr:
+                expr = '{}.{}'.format(
+                    self.alias, expr
+                )
+            cond_list.append(expr)
         return 'WHERE ' + ' AND '.join(cond_list)
 
     def get_node(self, json_data):
@@ -137,8 +145,7 @@ class Neo4Table(DbTable):
         if errors:
             return errors
         command = self.get_node(json_data)
-        session = self.driver.session()
-        session.run(command)
+        self.execute(command)
         return None
 
     def update(self, json_data):
@@ -149,8 +156,7 @@ class Neo4Table(DbTable):
             self.get_conditions(json_data)
         )
         command = CYPHER_QUERY.format(**params)
-        session = self.driver.session()
-        session.run(command)
+        self.execute(command)
 
     def delete(self, values):
         params = self.query_elements(
@@ -158,5 +164,4 @@ class Neo4Table(DbTable):
             self.get_conditions(values)
         )
         command = CYPHER_QUERY.format(**params)
-        session = self.driver.session()
-        session.run(command)
+        self.execute(command)

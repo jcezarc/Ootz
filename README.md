@@ -30,6 +30,10 @@ Supondo que você esteja rodando esta API **localmente**, as seguintes rotas est
 * `/Ootz/Kit` Funciona igual _/Ootz/Produto_ só que para **Kits**.
 
 * `/Ootz/Item` Relaciona uma **Kit** com uma **Produto**.
+* `/Ootz/Calculo/<sku>` Ao passar o sku do kit, calcula o seguinte:
+  * custo: O custo total do kit;
+  * preco: A soma dos preços com os descontos;
+  * qtd_max: A quantidade máxima possível de kits, de acordo com os produtos disponíveis no estoque.
 
 ---
 
