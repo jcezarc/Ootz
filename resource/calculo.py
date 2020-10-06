@@ -5,9 +5,6 @@ from service.Item_service import ItemService
 from util.messages import resp_ok
 
 
-def sku_kit(value):
-    return f'kit.sku = "{value}"'
-
 class Calculo(Resource):
     def get(self, sku):
         '''
@@ -22,7 +19,6 @@ class Calculo(Resource):
           #Consulta
         '''
         service = ItemService()
-        service.table.new_condition_event['sku'] = sku_kit
         msg, status_code = service.find({
           'sku': sku
         })
@@ -33,12 +29,12 @@ class Calculo(Resource):
         total_preco = 0
         qtd_max = 0
         for item in dataset:
-            quantidade = item['quantidade']
+            quantidade = int(item['quantidade'])
             produto = item['produto']
-            custo = produto['custo']
-            preco = produto['preco']
-            desconto = item['desconto']
-            estoque = produto['estoque']
+            custo = float(produto['custo'])
+            preco = float(produto['preco'])
+            desconto = float(item['desconto'])
+            estoque = int(produto['estoque'])
             disponivel = estoque / quantidade
             if not qtd_max or qtd_max > disponivel:
               qtd_max = disponivel

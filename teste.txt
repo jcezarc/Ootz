@@ -1,14 +1,20 @@
 Kit Vá Trabalhar
 ================
 2 Caderno de anotações Red Bug
-4 Canetas gel colorida Sorayiama
-1 caneca de café Geek Force
+	(cad-anot-red-bug)
+4 Caneta gel colorida Sorayiama
+	(caneta-gel-col-soray)
+1 Caneca de café Geek Force
+	(caneca-geek-force)
 
 Kit Fique em Casa
 =================
-1 Teclado gamer Redragon
+1 Teclado gamer Blackdragon
+	(tec-gam-black-drag)
 1 Mouse gamer Corsair
+	(mouse-gam-cors)
 1 par de fones de ouvido JBL
+	(fone-ouv-jbl)
 
 
 Kit Vá & Fique

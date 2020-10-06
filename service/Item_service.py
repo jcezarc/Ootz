@@ -9,12 +9,21 @@ from util.messages import (
 )
 from service.db_connection import get_table
 
+
 class ItemService:
     def __init__(self, table=None):
         if table:
             self.table = table
         else:
             self.table = get_table(ItemModel)
+            self.table.new_condition_event['sku'] = self.sku_kit
+
+    def sku_kit(self, value):
+        field = 'kit.sku'
+        ttype = self.table.__class__.__name__
+        if ttype == 'LiteTable':
+            field = 'kit'
+        return "{} = '{}'".format(field, value)
 
     def find(self, params, id=None):
         if id:

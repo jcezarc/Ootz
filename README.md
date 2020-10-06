@@ -15,6 +15,14 @@ Recursos:
 * Testes unitários com Pytest.
 * <s>Autenticação por JWT</s> (desabilitado)
 
+### Como rodar
+Existem 2 maneiras de configurar o banco de dados:
+1. Alterar o default das variáveis em `/service/db_connection.py`
+2. Usar (no Windows) algo como o _batch_ "**run.bat**" onde as variáveis de ambiente são atribuídas
+> É importanto você escolher um dos [banco de dados](#banco-de-dados) disponíveis.
+
+---
+
 ### Endpoints
 Supondo que você esteja rodando esta API **localmente**, as seguintes rotas estarão disponíveis:
     
@@ -42,16 +50,17 @@ Supondo que você esteja rodando esta API **localmente**, as seguintes rotas est
 
 ---
 
-### Configuração de banco de dados
+### Banco de dados
 > Como exemplo, estou usando um DAO, feito totalmente por mim, para o banco de dados em grafos **Neo4J**.
 
 Esta API foi testada por mim para usar qualquer um dos bancos de dados abaixo:
-* Neo4J (o atual);
-* MongoDB;
-* AWS DynamoDB 
-* MySQL;
-* Sql Server;
-* PostgreSQL;
+* Neo4J
+* MongoDB
+* DynamoDB 
+* MySql
+* SqlServer
+* Postgres
+* Sqlite.
 
 ---
 ### Testes unitários
