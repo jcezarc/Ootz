@@ -10,4 +10,5 @@ REM set OOTZ_DB_TYPE=Sqlite
 REM set OOTZ_USER=<***usuário***>
 REM set OOTZ_PASSWORD=<***senha***>
 
+pip install -r requirements.txt
 start python app.py
