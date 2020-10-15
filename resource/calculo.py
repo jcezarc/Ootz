@@ -31,8 +31,8 @@ class Calculo(Resource):
         for item in dataset:
             quantidade = int(item['quantidade'])
             produto = item['produto']
-            custo = float(produto['custo'])
-            preco = float(produto['preco'])
+            custo = float(produto['custo']) * quantidade
+            preco = float(produto['preco']) * quantidade
             desconto = float(item['desconto'])
             estoque = int(produto['estoque'])
             disponivel = estoque / quantidade
